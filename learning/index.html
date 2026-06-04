@@ -244,7 +244,7 @@ ALPHA.forEach(([L, word, e, zhw, pyw]) => DATA.push({
   cat: "Alphabet", e,
   zh: "字母 " + L,
   py: VOWELS.includes(L) ? "vowel 元音" : "consonant 辅音",
-  en: L + " " + L.toLowerCase() + " — " + word,
+  en: L + " — " + word,
   zhs: L + " 代表" + zhw + "。",
   pys: L + " dàibiǎo " + pyw + ".",
   ens: (L === "X" ? L + " is in " + word + "." : L + " is for " + word + ".")
@@ -267,7 +267,7 @@ const NUMS = [
  ["100","One hundred","一百","yìbǎi","💯","这本书一百块。","Zhè běn shū yìbǎi kuài.","This book is one hundred dollars."],
  ["1000","One thousand","一千","yìqiān","🔢","这个城市有一千年的历史。","Zhège chéngshì yǒu yìqiān nián de lìshǐ.","This city is one thousand years old."]
 ];
-NUMS.forEach(([n, en, zh, py, e, zhs, pys, ens]) => DATA.push({cat:"Numbers", e, zh: zh + " " + n, py, en, zhs, pys, ens}));
+NUMS.forEach(([n, en, zh, py, e, zhs, pys, ens]) => DATA.push({cat:"Numbers", e, zh, py: py + " · " + n, en, zhs, pys, ens}));
 
 // --- Tricky Sounds (hardest English sounds for Chinese speakers) ---
 [
@@ -419,22 +419,35 @@ function listen(i) {
   const d = DATA[i];
   // Practice the language you are LEARNING
   const studyLang = mode === 'zh' ? 'zh-CN' : 'en-US';
-  const target = mode === 'zh' ? d.zh : d.en;
+  // Pick the actual speakable word: after the dash ("TH — think" → "think"),
+  // first option before any slash ("rice / light" → "rice"), no parentheses.
+  const raw = mode === 'zh' ? d.zh : d.en;
+  let target = raw;
+  if (target.includes('—')) target = target.split('—').slice(1).join(' ');
+  target = target.split('/')[0].replace(/\(.*?\)/g, '').trim() || raw;
   const r = new SR();
   r.lang = studyLang;
   r.interimResults = false;
   r.maxAlternatives = 3;
   res.textContent = '🎙️ Listening... say: ' + target;
   res.style.color = '#1a6b54';
+  let gotResult = false;
+  r.onend = () => {
+    if (!gotResult) {
+      res.textContent = '⚠️ Did not hear anything — tap 🎤 and speak right away. 没听到，请再说一次。';
+      res.style.color = '#c0392b';
+    }
+  };
   r.onresult = ev => {
+    gotResult = true;
     const alts = [...ev.results[0]].map(a => a.transcript);
     const heard = alts[0];
-    const t = norm(target.replace(/—.*$/, '').replace(/\(.*\)/, ''));
+    const t = norm(target);
     const ok = alts.some(a => { const h = norm(a); return h && (t.includes(h) || h.includes(t) || t.split(' ').some(w => w.length > 2 && h.includes(w))); });
     res.textContent = ok ? '✅ Heard: "' + heard + '" — sounds right! 很棒！' : '🔁 Heard: "' + heard + '" — listen again and retry. 再试一次。';
     res.style.color = ok ? '#1a6b54' : '#c0392b';
   };
-  r.onerror = e => { res.textContent = e.error === 'not-allowed' ? '⚠️ Please allow microphone access. 请允许使用麦克风。' : '⚠️ Did not catch that — try again. 再试一次。'; res.style.color = '#c0392b'; };
+  r.onerror = e => { gotResult = true; res.textContent = e.error === 'not-allowed' ? '⚠️ Please allow microphone access. 请允许使用麦克风。' : '⚠️ Did not catch that — try again. 再试一次。'; res.style.color = '#c0392b'; };
   r.onspeechend = () => r.stop();
   r.start();
 }
