@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian Adrian — Travel Itinerary</title>
+<style>
+  @page { size: A4; margin: 12mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Arial, system-ui, sans-serif;
+    color: #1d2733; background: #eceff4; line-height: 1.5; padding: 24px;
+    font-size: 13.5px;
+  }
+  .sheet { max-width: 800px; margin: 0 auto; background: #fff; border-radius: 12px;
+    overflow: hidden; box-shadow: 0 12px 44px rgba(0,0,0,.12); }
+  .head { background: linear-gradient(135deg, #14233c, #28456f); color: #fff; padding: 24px 30px; }
+  .head h1 { font-size: 1.45rem; font-weight: 600; }
+  .head .meta { margin-top: 6px; font-size: .82rem; opacity: .85; }
+  .head .pax { margin-top: 10px; font-size: .95rem; font-weight: 600; }
+  .alert { background: #fff4e5; border-left: 4px solid #e2922b; padding: 12px 18px;
+    font-size: .82rem; color: #8a5a12; }
+  .alert b { color: #6e470d; }
+  .body { padding: 8px 30px 26px; }
+  h2 { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; color: #28456f;
+    margin: 24px 0 4px; padding-bottom: 5px; border-bottom: 2px solid #e3e8f0; }
+  .leg { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid #eef1f6; }
+  .legtime { flex: 0 0 92px; }
+  .legtime .t { font-weight: 700; font-size: 1rem; color: #14233c; }
+  .legtime .d { font-size: .74rem; color: #8590a3; }
+  .legmid { flex: 1; }
+  .legmid .ap { font-weight: 600; }
+  .legmid .sub { font-size: .82rem; color: #677488; margin-top: 1px; }
+  .tag { display: inline-block; font-size: .72rem; background: #eef3fb; color: #28456f;
+    padding: 2px 8px; border-radius: 14px; margin-top: 5px; margin-right: 4px; }
+  .tag.cabin { background: #e8f5ee; color: #1a6b4a; }
+  .layover { font-size: .8rem; color: #98711a; background: #fdf6e6; border-radius: 8px;
+    padding: 6px 12px; margin: 8px 0 8px 106px; display: inline-block; }
+  .conn { background: #f4f7fc; border: 1px solid #dbe5f2; border-radius: 12px;
+    padding: 16px 20px; margin: 12px 0; }
+  .conn h3 { font-size: .95rem; color: #28456f; margin-bottom: 4px; }
+  .conn .win { font-size: .82rem; color: #677488; margin-bottom: 10px; }
+  ol.steps { margin: 0 0 0 20px; }
+  ol.steps li { margin-bottom: 6px; font-size: .86rem; }
+  ol.steps li b { color: #14233c; }
+  .phase { font-weight: 700; color: #28456f; font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .06em; margin: 10px 0 4px; }
+  .timeline { font-size: .82rem; background: #14233c; color: #dbe6f5; border-radius: 10px;
+    padding: 12px 16px; margin-top: 12px; line-height: 1.8; }
+  table.ref { width: 100%; border-collapse: collapse; font-size: .82rem; margin-top: 6px; }
+  table.ref td { padding: 5px 8px; border-bottom: 1px solid #eef1f6; }
+  table.ref td:first-child { color: #8590a3; width: 42%; }
+  .foot { padding: 14px 30px; border-top: 1px solid #e3e8f0; font-size: .76rem; color: #8590a3; }
+  @media print { body { background:#fff; padding:0; font-size:12px; }
+    .sheet { box-shadow:none; border-radius:0; max-width:100%; } h2 { page-break-after: avoid; }
+    .leg, .conn { page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="head">
+    <h1>Travel Itinerary — Tampa ✈ Shenzhen</h1>
+    <div class="meta">Delta conf. GVUY8U (eTkt 0062437287984) · Hainan conf. ADDLK5 (eTkt 880-2431367349)</div>
+    <div class="pax">Mr. Brian Douglas Adrian · Business / Delta One &amp; First</div>
+  </div>
+  <div class="alert">
+    <b>SEPARATE TICKETS — bags are NOT checked through.</b> Delta tags your 2 bags to <b>Paris only</b>.
+    You must reclaim them at CDG, change terminals (T2E → T1), and re-check with Hainan. Full steps below.
+  </div>
+  <div class="body">
+
+    <h2>Outbound · Sunday 21 June 2026</h2>
+
+    <div class="leg">
+      <div class="legtime"><div class="t">12:39</div><div class="d">Sun Jun 21</div></div>
+      <div class="legmid">
+        <div class="ap">Tampa, FL (TPA) → Atlanta, GA (ATL)</div>
+        <div class="sub">Arrive ATL 2:15 PM · 1h 36m · Boeing 757</div>
+        <span class="tag">Delta DL1587</span><span class="tag">Seat 5C</span><span class="tag cabin">Delta First</span>
+      </div>
+    </div>
+    <div class="layover">⏱ Layover Atlanta · 1h 18m — move toward International Terminal (Concourse E/F) via Plane Train</div>
+
+    <div class="leg">
+      <div class="legtime"><div class="t">15:33</div><div class="d">Sun Jun 21</div></div>
+      <div class="legmid">
+        <div class="ap">Atlanta, GA (ATL) → Paris, CDG</div>
+        <div class="sub">Arrive CDG <b>6:10 AM Mon Jun 22</b> · 8h 37m · Boeing 767-400 · arrives <b>Aérogare 2, Terminal E</b></div>
+        <span class="tag">Delta DL0082</span><span class="tag">Seat 6B</span><span class="tag cabin">Delta One (flat bed)</span>
+      </div>
+    </div>
+
+    <h2>Connection · Paris CDG · Monday 22 June</h2>
+    <div class="conn">
+      <h3>🧭 Change of airline &amp; terminal — T2E → T1</h3>
+      <div class="win">Land T2E 6:10 AM · Hainan HU758 departs Terminal 1 at 11:15 AM · ~5 hours</div>
+
+      <div class="phase">At Terminal 2E — arrival</div>
+      <ol class="steps">
+        <li>Deplane; follow <b>“Sortie / Exit”</b> and <b>“Bagages / Baggage Claim.”</b></li>
+        <li><b>Passport control (Police aux Frontières)</b> — Schengen entry. (US passport, no visa for short stay.)</li>
+        <li><b>Baggage claim</b> — collect <b>both</b> checked bags. Allow 30–45 min.</li>
+        <li><b>Customs</b> — green “Nothing to Declare” channel into the arrivals hall.</li>
+      </ol>
+
+      <div class="phase">Change terminals T2E → T1</div>
+      <ol class="steps" start="5">
+        <li>Follow signs to <b>CDGVAL</b> (free shuttle train, 24/7, every ~4 min).</li>
+        <li>Ride CDGVAL to <b>Terminal 1</b> (~8–12 min); follow <b>“Départs / Departures.”</b></li>
+      </ol>
+
+      <div class="phase">At Terminal 1 — departure</div>
+      <ol class="steps" start="7">
+        <li><b>Hainan Airlines check-in</b> (Departures level). Opens ~8:15 AM, closes ~10:15 AM. Drop both bags — now tagged to Shenzhen.</li>
+        <li><b>Security screening.</b></li>
+        <li><b>Passport control (exit)</b> — Schengen departure stamp (Shenzhen is non-Schengen).</li>
+        <li>Proceed to <b>gate</b> (T1 satellite). Business class = <b>lounge access</b> for breakfast.</li>
+      </ol>
+
+      <div class="timeline">
+        <b>Morning timeline:</b> 6:10 land T2E → ~7:45 through immigration &amp; bags →
+        ~8:25 reach T1 via CDGVAL → ~9:15 checked in &amp; through security → lounge →
+        <b>board ~10:25 → depart 11:15.</b>
+      </div>
+    </div>
+
+    <div class="leg">
+      <div class="legtime"><div class="t">11:15</div><div class="d">Mon Jun 22</div></div>
+      <div class="legmid">
+        <div class="ap">Paris, CDG (Terminal 1) → Shenzhen (SZX)</div>
+        <div class="sub">Arrive SZX <b>4:50 AM Tue Jun 23</b> · 11h 35m · Airbus 78A · <b>Terminal 3</b> · low-fat meal · 2 bags</div>
+        <span class="tag">Hainan HU758</span><span class="tag">Seat 17K</span><span class="tag cabin">Business (D)</span>
+      </div>
+    </div>
+    <p style="font-size:.82rem;color:#677488;margin-top:8px;">At Shenzhen: clear Chinese immigration (China visa/entry docs ready), claim 2 bags, customs, exit.</p>
+
+    <h2>Return · Monday 21 September 2026</h2>
+    <div class="leg">
+      <div class="legtime"><div class="t">01:30</div><div class="d">Mon Sep 21</div></div>
+      <div class="legmid">
+        <div class="ap">Shenzhen (SZX, Terminal 3) → Paris, CDG (Terminal 1)</div>
+        <div class="sub">Arrive CDG 8:10 AM · 12h 40m · Airbus 78A · 2 bags</div>
+        <span class="tag">Hainan HU757</span><span class="tag">Seat 17K</span><span class="tag cabin">Business (D)</span>
+      </div>
+    </div>
+    <div class="alert" style="margin-top:14px;border-radius:8px;">
+      ✏️ <b>Flight home from Paris (CDG → Tampa) — not yet booked.</b> Same manual connection in reverse:
+      reclaim bags at T1, Schengen entry/customs, transfer to your home airline’s terminal, re-check in.
+    </div>
+
+    <h2>Reference</h2>
+    <table class="ref">
+      <tr><td>Passenger</td><td>Mr. Brian Douglas Adrian · DOB 30 Jan 1959 · US citizen</td></tr>
+      <tr><td>Passport</td><td>A83119166</td></tr>
+      <tr><td>Hainan Fortune Wings #</td><td>HU 5491007165</td></tr>
+      <tr><td>Delta booking</td><td>GVUY8U · eTkt 0062437287984 · one-way TPA→CDG</td></tr>
+      <tr><td>Hainan booking</td><td>ADDLK5 · airline conf. QKL859 · eTkt 880-2431367349 · round-trip</td></tr>
+      <tr><td>Trip protection</td><td>Allianz (Delta) — support 1-800-419-8016</td></tr>
+      <tr><td>Contact</td><td>adrian@dradrian.net · +1 352-705-5876</td></tr>
+    </table>
+  </div>
+  <div class="foot">
+    All times shown are local to each airport. Gates listed as “TBD” are assigned closer to departure — verify at check-in.
+  </div>
+</div>
+</body>
+</html>

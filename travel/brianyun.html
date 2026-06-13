@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian's Journey · Brian 的行程</title>
+<style>
+  @page { size: A4; margin: 14mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", "PingFang SC", "Songti SC", system-ui, sans-serif;
+    color: #18243f; background: #eef3fb;
+    line-height: 1.5; padding: 28px;
+  }
+  .sheet {
+    max-width: 760px; margin: 0 auto; background: #fff;
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 14px 50px rgba(30,60,120,.16);
+  }
+  .head {
+    background: linear-gradient(135deg, #1c3a73, #2f72b8 70%, #4a9fd4);
+    color: #fff; padding: 30px 34px 26px; text-align: center;
+  }
+  .head h1 { font-size: 1.7rem; font-weight: 600; letter-spacing: .02em; }
+  .head .zh { font-size: 1.15rem; margin-top: 4px; opacity: .95; }
+  .head .route { margin-top: 14px; font-size: .95rem; letter-spacing: .12em; opacity: .9; }
+  .body { padding: 26px 34px 30px; }
+  .lead {
+    text-align: center; color: #2f72b8; font-size: 1.02rem;
+    margin-bottom: 24px; line-height: 1.7;
+  }
+  .seg { display: flex; gap: 16px; padding: 16px 0; border-top: 1px solid #e6edf7; }
+  .seg:first-of-type { border-top: none; }
+  .when { flex: 0 0 116px; text-align: right; }
+  .when .date { font-weight: 700; font-size: .82rem; color: #1c3a73; }
+  .when .datezh { font-size: .72rem; color: #7e8aa3; }
+  .dot { flex: 0 0 auto; position: relative; width: 14px; }
+  .dot::before {
+    content: ""; position: absolute; left: 4px; top: 6px;
+    width: 7px; height: 7px; border-radius: 50%; background: #2f72b8;
+  }
+  .dot::after {
+    content: ""; position: absolute; left: 7px; top: 12px;
+    width: 1px; height: calc(100% + 16px); background: #d3deef;
+  }
+  .seg:last-of-type .dot::after { display: none; }
+  .what { flex: 1; }
+  .what .city { font-weight: 700; font-size: 1rem; }
+  .what .cityzh { color: #5b6a86; font-size: .88rem; }
+  .what .detail { font-size: .85rem; color: #6b7790; margin-top: 2px; }
+  .what .flight { display: inline-block; margin-top: 5px; font-size: .76rem;
+    background: #eaf2fb; color: #2f72b8; padding: 2px 9px; border-radius: 20px; }
+  .arrive {
+    background: linear-gradient(135deg, #fff8e9, #fdeecb);
+    border: 1.5px solid #f0d488; border-radius: 14px;
+    padding: 18px 20px; margin: 22px 0; text-align: center;
+  }
+  .arrive .big { font-size: 1.25rem; font-weight: 700; color: #b8841a; }
+  .arrive .bigzh { font-size: 1.05rem; color: #9a6f15; margin-top: 3px; }
+  .arrive .sub { font-size: .82rem; color: #8a7430; margin-top: 6px; }
+  .divider { text-align: center; color: #9fb0cf; font-size: .8rem; letter-spacing: .2em;
+    margin: 26px 0 8px; }
+  .note {
+    background: #f3f7fd; border-radius: 12px; padding: 14px 18px;
+    font-size: .8rem; color: #6b7790; margin-top: 22px; line-height: 1.7;
+  }
+  .foot { text-align: center; padding: 16px; color: #8ea1c4; font-size: .78rem;
+    border-top: 1px solid #e6edf7; }
+  .heart { color: #2f72b8; }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; border-radius: 0; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="head">
+    <h1>Brian's Journey to You</h1>
+    <div class="zh">Brian 来见你的行程</div>
+    <div class="route">TAMPA · 坦帕 → PARIS · 巴黎 → SHENZHEN · 深圳</div>
+  </div>
+  <div class="body">
+    <div class="lead">
+      I'm coming to you. Here is every step of the way.<br>
+      我要来你身边了。这是我一路上的每一步。 ✈️
+    </div>
+
+    <!-- OUTBOUND -->
+    <div class="seg">
+      <div class="when"><div class="date">Sun, Jun 21</div><div class="datezh">6月21日 周日</div></div>
+      <div class="dot"></div>
+      <div class="what">
+        <div class="city">Leave Tampa, USA · 12:39 PM</div>
+        <div class="cityzh">从美国坦帕出发 · 当地时间下午 12:39</div>
+        <div class="detail">via Atlanta · 经亚特兰大转机</div>
+        <div class="flight">Delta DL1587 / DL0082</div>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="when"><div class="date">Mon, Jun 22</div><div class="datezh">6月22日 周一</div></div>
+      <div class="dot"></div>
+      <div class="what">
+        <div class="city">Paris, France · arrive 6:10 AM</div>
+        <div class="cityzh">到达法国巴黎 · 早上 6:10</div>
+        <div class="detail">Change airlines &amp; terminals, then fly onward · 换航空公司和航站楼，再继续飞</div>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="when"><div class="date">Mon, Jun 22</div><div class="datezh">6月22日 周一</div></div>
+      <div class="dot"></div>
+      <div class="what">
+        <div class="city">Leave Paris · 11:15 AM</div>
+        <div class="cityzh">从巴黎起飞 · 上午 11:15</div>
+        <div class="detail">Hainan Airlines, nonstop to Shenzhen · 海南航空，直飞深圳</div>
+        <div class="flight">Hainan HU758 · 11h 35m</div>
+      </div>
+    </div>
+
+    <!-- ARRIVAL HIGHLIGHT -->
+    <div class="arrive">
+      <div class="big">✨ Arrive Shenzhen — Tue, Jun 23, 4:50 AM ✨</div>
+      <div class="bigzh">到达深圳 — 6月23日 周二，凌晨 4:50</div>
+      <div class="sub">Bao'an International Airport (SZX), Terminal 3 · 宝安国际机场 (SZX)，3 号航站楼</div>
+    </div>
+
+    <div class="divider">— RETURN · 返程 —</div>
+
+    <div class="seg">
+      <div class="when"><div class="date">Mon, Sep 21</div><div class="datezh">9月21日 周一</div></div>
+      <div class="dot"></div>
+      <div class="what">
+        <div class="city">Leave Shenzhen · 1:30 AM</div>
+        <div class="cityzh">从深圳起飞 · 凌晨 1:30</div>
+        <div class="detail">Hainan Airlines back to Paris · 海南航空飞回巴黎</div>
+        <div class="flight">Hainan HU757 · 12h 40m</div>
+      </div>
+    </div>
+
+    <div class="note">
+      ✏️ Flight home from Paris to Tampa — still to be booked.<br>
+      从巴黎回坦帕的航班 — 还没订，稍后补上。
+    </div>
+  </div>
+  <div class="foot">
+    Until then, we look at the same sky. <span class="heart">同一片天空。</span>
+  </div>
+</div>
+</body>
+</html>

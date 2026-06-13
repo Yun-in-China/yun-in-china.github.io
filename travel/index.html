@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian → Yun</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { min-height:100%; }
+  body {
+    font-family:"Helvetica Neue","PingFang SC","Songti SC",system-ui,sans-serif;
+    background:linear-gradient(180deg,#060d22 0%,#0a1633 45%,#16294f 80%,#23386b 100%);
+    color:#eaf0fb; min-height:100vh; overflow-x:hidden; padding-bottom:40px;
+  }
+  #sky{position:fixed;inset:0;pointer-events:none;z-index:0;}
+  .star{position:absolute;border-radius:50%;background:#fff;animation:tw 4s ease-in-out infinite;}
+  @keyframes tw{0%,100%{opacity:.15}50%{opacity:.9}}
+  .wrap{position:relative;z-index:1;max-width:780px;margin:0 auto;padding:22px 18px;}
+  .toggle{display:flex;gap:8px;justify-content:center;margin-bottom:22px;}
+  .tg{border:1px solid rgba(160,190,255,.35);background:rgba(125,160,232,.12);color:#eaf0fb;
+    padding:9px 20px;border-radius:999px;cursor:pointer;font-size:.95rem;}
+  .tg.on{background:rgba(125,160,232,.4);box-shadow:0 0 18px rgba(125,160,232,.4);}
+  h1{text-align:center;font-weight:400;font-size:1.7rem;letter-spacing:.04em;
+    text-shadow:0 0 26px rgba(120,165,255,.5);}
+  .sub{text-align:center;color:#9fb6e6;margin-top:4px;font-size:.95rem;}
+  /* countdown */
+  .cd{margin:26px auto 10px;text-align:center;}
+  .cdlabel{color:#bcd0f5;font-size:1rem;margin-bottom:10px;}
+  .cdlabel .zh{display:block;color:#8da4d4;font-size:.85rem;margin-top:2px;}
+  .clock{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .unit{background:rgba(10,22,51,.55);border:1px solid rgba(160,190,255,.22);border-radius:14px;
+    padding:14px 8px;min-width:78px;backdrop-filter:blur(5px);}
+  .unit .n{font-size:2.2rem;font-weight:700;color:#fff;line-height:1;}
+  .unit .l{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#8da4d4;margin-top:6px;}
+  .status{margin:22px auto 4px;text-align:center;background:rgba(125,160,232,.12);
+    border:1px solid rgba(160,190,255,.25);border-radius:14px;padding:16px 18px;max-width:560px;}
+  .status .now{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#7e96c8;}
+  .status .msg{font-size:1.15rem;margin-top:6px;color:#fff;}
+  .status .msgzh{font-size:.95rem;margin-top:3px;color:#bcd0f5;}
+  /* map */
+  .map{margin:26px auto;max-width:680px;}
+  .legline{display:flex;align-items:flex-start;gap:14px;padding:14px 4px;border-top:1px solid rgba(160,190,255,.14);}
+  .legline:first-child{border-top:none;}
+  .legline.active{background:rgba(125,160,232,.13);border-radius:12px;}
+  .lt{flex:0 0 78px;text-align:right;}
+  .lt .t{font-weight:700;color:#fff;font-size:.95rem;}
+  .lt .d{font-size:.7rem;color:#8da4d4;}
+  .ld{flex:0 0 14px;position:relative;}
+  .ld::before{content:"";position:absolute;left:3px;top:6px;width:8px;height:8px;border-radius:50%;
+    background:#5a7fd0;}
+  .legline.active .ld::before{background:#ffd479;box-shadow:0 0 10px #ffd479;}
+  .ld::after{content:"";position:absolute;left:6.5px;top:13px;width:1px;height:calc(100% + 14px);
+    background:rgba(160,190,255,.2);}
+  .legline:last-child .ld::after{display:none;}
+  .li{flex:1;}
+  .li .city{font-weight:600;color:#eaf0fb;}
+  .li .meta{font-size:.82rem;color:#9fb6e6;margin-top:2px;}
+  .li .tag{display:inline-block;font-size:.7rem;background:rgba(125,160,232,.2);color:#cfdcf7;
+    padding:2px 8px;border-radius:12px;margin-top:5px;margin-right:4px;}
+  .track{display:inline-block;margin-top:7px;font-size:.74rem;text-decoration:none;
+    color:#bcd9ff;border:1px solid rgba(140,180,255,.4);padding:3px 11px;border-radius:999px;
+    background:rgba(90,130,210,.16);}
+  .track:hover{background:rgba(120,165,255,.34);}
+  .trackBig{display:inline-block;margin-top:12px;font-size:.95rem;text-decoration:none;color:#0a1633;
+    font-weight:700;background:linear-gradient(135deg,#bcd9ff,#7da0e8);padding:10px 22px;border-radius:999px;
+    box-shadow:0 0 22px rgba(125,160,232,.5);animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 16px rgba(125,160,232,.4)}50%{box-shadow:0 0 30px rgba(125,160,232,.75)}}
+  .arrivecard{background:linear-gradient(135deg,rgba(255,210,120,.16),rgba(255,180,90,.1));
+    border:1px solid rgba(240,200,120,.4);border-radius:14px;padding:16px;text-align:center;margin:16px 0;}
+  .arrivecard .b{font-size:1.05rem;font-weight:700;color:#ffd479;}
+  .arrivecard .z{font-size:.9rem;color:#e8c98a;margin-top:3px;}
+  .conn{font-size:.8rem;color:#9fb6e6;background:rgba(10,22,51,.5);border-radius:10px;
+    padding:10px 14px;margin:6px 0 6px 92px;line-height:1.7;}
+  .brianonly,.yunonly{display:none;}
+  body.view-brian .brianonly{display:block;}
+  body.view-yun .yunonly{display:block;}
+  .lead{text-align:center;color:#bcd0f5;font-size:1.02rem;line-height:1.8;margin-bottom:6px;}
+  .foot{text-align:center;color:#5e76aa;font-size:.8rem;letter-spacing:.12em;margin-top:30px;}
+  .divider{text-align:center;color:#5e76aa;font-size:.75rem;letter-spacing:.22em;margin:22px 0 6px;}
+</style>
+</head>
+<body class="view-yun">
+<div id="sky"></div>
+<div class="wrap">
+  <div class="toggle">
+    <button class="tg on" id="tgYun" onclick="setView('yun')">💙 For Yun 给云</button>
+    <button class="tg" id="tgBrian" onclick="setView('brian')">✈️ For Brian</button>
+  </div>
+
+  <h1 id="title">Brian → Yun</h1>
+  <div class="sub yunonly">同一片天空 · Under the same sky</div>
+  <div class="sub brianonly">Tampa → Paris → Shenzhen · Itinerary</div>
+
+  <div class="lead yunonly" style="margin-top:18px">I'm coming to you. 💙<br>我要来你身边了。</div>
+
+  <div class="cd">
+    <div class="cdlabel" id="cdLabel"></div>
+    <div class="clock">
+      <div class="unit"><div class="n" id="cdD">--</div><div class="l">Days 天</div></div>
+      <div class="unit"><div class="n" id="cdH">--</div><div class="l">Hrs 时</div></div>
+      <div class="unit"><div class="n" id="cdM">--</div><div class="l">Min 分</div></div>
+      <div class="unit"><div class="n" id="cdS">--</div><div class="l">Sec 秒</div></div>
+    </div>
+  </div>
+
+  <div class="status">
+    <div class="now">Right now · 现在</div>
+    <div class="msg" id="stMsg">…</div>
+    <div class="msgzh" id="stZh">…</div>
+    <div id="stTrack"></div>
+  </div>
+
+  <div class="map" id="map"></div>
+
+  <div class="divider brianonly">RETURN · 返程</div>
+  <div class="map brianonly" id="mapReturn"></div>
+
+  <div class="foot">Until then, we look at the same sky. 同一片天空。</div>
+</div>
+
+<script>
+// ---- stars ----
+const sky=document.getElementById('sky');
+for(let i=0;i<120;i++){const s=document.createElement('div');s.className='star';
+  const z=Math.random()*2+.5;s.style.width=s.style.height=z+'px';
+  s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=(Math.random()*4)+'s';s.style.animationDuration=(3+Math.random()*4)+'s';
+  sky.appendChild(s);}
+
+// ---- itinerary (UTC anchors) ----
+const LAND = Date.UTC(2026,5,22,20,50);   // Shenzhen landing, main countdown target
+const RET_DEP = Date.UTC(2026,8,20,17,30); // return departs SZX
+
+// legs: type flight|ground, utc start/end, view fields
+const OUT = [
+ {type:'flight', s:Date.UTC(2026,5,21,16,39), e:Date.UTC(2026,5,21,18,15),
+   t:'12:39', d:'Sun Jun 21', city:'Tampa → Atlanta', tampa:true,
+   meta:'Delta DL1587 · Boeing 757 · 1h36', fa:'DAL1587',
+   en:'Brian is flying from Tampa to Atlanta 🛫', zh:'Brian 正从坦帕飞往亚特兰大',
+   tags:['Seat 5C','Delta First']},
+ {type:'ground', s:Date.UTC(2026,5,21,18,15), e:Date.UTC(2026,5,21,19,33),
+   t:'2:15', d:'Sun Jun 21', city:'Atlanta — change planes', meta:'Layover 1h18',
+   en:'Brian is changing planes in Atlanta', zh:'Brian 正在亚特兰大转机', tags:[]},
+ {type:'flight', s:Date.UTC(2026,5,21,19,33), e:Date.UTC(2026,5,22,4,10),
+   t:'3:33', d:'Sun Jun 21', city:'Atlanta → Paris', meta:'Delta DL0082 · 767 · 8h37 · arr 6:10 AM Jun 22', fa:'DAL82',
+   en:'Brian is over the Atlantic, flying to Paris 🌊', zh:'Brian 正飞越大西洋，前往巴黎',
+   tags:['Seat 6B','Delta One (flat bed)']},
+ {type:'ground', s:Date.UTC(2026,5,22,4,10), e:Date.UTC(2026,5,22,9,15),
+   t:'6:10', d:'Mon Jun 22', city:'Paris CDG — change airline', meta:'T2E → T1 · ~5h connection',
+   en:'Brian is in Paris, switching to Hainan Airlines', zh:'Brian 正在巴黎，转乘海南航空',
+   conn:'Reclaim bags at T2E → passport control → customs → CDGVAL shuttle to T1 → Hainan check-in → security → gate.',
+   tags:[]},
+ {type:'flight', s:Date.UTC(2026,5,22,9,15), e:LAND,
+   t:'11:15', d:'Mon Jun 22', city:'Paris → Shenzhen', shen:true,
+   meta:'Hainan HU758 · 11h35 · arr 4:50 AM Jun 23, Terminal 3', fa:'CHH758',
+   en:'Brian is in the air, on the way to YOU 💙', zh:'Brian 正在飞向你 💙',
+   tags:['Seat 17K','Business']}
+];
+const RETURN=[
+ {type:'flight', s:RET_DEP, e:Date.UTC(2026,8,21,6,10),
+   t:'1:30', d:'Mon Sep 21', city:'Shenzhen → Paris',
+   meta:'Hainan HU757 · 12h40 · arr 8:10 AM CDG T1', fa:'CHH757',
+   en:'Brian is flying back to Paris', zh:'Brian 正飞回巴黎', tags:['Seat 17K','Business']},
+ {type:'note', city:'Paris → Tampa (home) — not yet booked', meta:'从巴黎回坦帕 — 还没订'}
+];
+
+function pad(n){return String(n).padStart(2,'0');}
+
+function phase(now){
+  if(now < OUT[0].s) return {key:'pre', target:LAND,
+    lblEn:'Until Brian lands in Shenzhen', lblZh:'距离 Brian 到达深圳',
+    en:"The journey begins June 21. Brian hasn't left yet.", zh:'旅程 6月21日开始，Brian 还没出发。'};
+  if(now < LAND){
+    const leg = OUT.find(l=> now>=l.s && now<l.e) || OUT[OUT.length-1];
+    return {key:'travel', target:LAND, leg,
+      lblEn:'Until Brian lands in Shenzhen', lblZh:'距离 Brian 到达深圳',
+      en:leg.en, zh:leg.zh};
+  }
+  if(now < RET_DEP) return {key:'together', target:RET_DEP,
+    lblEn:'Time together — until Brian flies home', lblZh:'相聚时光 — 距离 Brian 返程',
+    en:'Brian is in Shenzhen, with you. 💙', zh:'Brian 正在深圳，和你在一起。💙'};
+  if(now < RETURN[0].e) return {key:'return', target:RETURN[0].e,
+    lblEn:'Brian is on his way back', lblZh:'Brian 正在返程',
+    en:'Brian is flying back to Paris.', zh:'Brian 正飞回巴黎。'};
+  return {key:'done', target:null,
+    lblEn:'', lblZh:'', en:'Until the next journey. 💙', zh:'等待下一次旅程。💙'};
+}
+
+function tick(){
+  const now=Date.now();
+  const p=phase(now);
+  document.getElementById('stMsg').textContent=p.en;
+  document.getElementById('stZh').textContent=p.zh;
+  const tb=document.getElementById('stTrack');
+  if(p.leg && p.leg.fa){
+    tb.innerHTML=`<a class="trackBig" target="_blank" rel="noopener" href="https://www.flightaware.com/live/flight/${p.leg.fa}">✈ Track this flight live</a>`;
+  }else{ tb.innerHTML=''; }
+  const lab=document.getElementById('cdLabel');
+  if(p.target){
+    let diff=Math.max(0,p.target-now);
+    const d=Math.floor(diff/864e5);diff-=d*864e5;
+    const h=Math.floor(diff/36e5);diff-=h*36e5;
+    const m=Math.floor(diff/6e4);diff-=m*6e4;
+    const s=Math.floor(diff/1e3);
+    document.getElementById('cdD').textContent=d;
+    document.getElementById('cdH').textContent=pad(h);
+    document.getElementById('cdM').textContent=pad(m);
+    document.getElementById('cdS').textContent=pad(s);
+    lab.innerHTML=p.lblEn+'<span class="zh">'+p.lblZh+'</span>';
+    document.querySelector('.clock').style.display='flex';
+  }else{
+    lab.innerHTML='';document.querySelector('.clock').style.display='none';
+  }
+  // active leg highlight
+  document.querySelectorAll('.legline').forEach((el,i)=>{
+    el.classList.toggle('active', p.leg && OUT[i]===p.leg);
+  });
+}
+
+function legHtml(l){
+  if(l.type==='note'){
+    return `<div class="legline"><div class="lt"></div><div class="ld"></div>
+      <div class="li"><div class="city">✏️ ${l.city}</div><div class="meta">${l.meta}</div></div></div>`;
+  }
+  const tags=(l.tags||[]).map(t=>`<span class="tag brianonly">${t}</span>`).join('');
+  const conn=l.conn?`<div class="conn brianonly">${l.conn}</div>`:'';
+  const track=l.fa?`<br><a class="track" target="_blank" rel="noopener" href="https://www.flightaware.com/live/flight/${l.fa}">✈ Track live on FlightAware</a>`:'';
+  return `<div class="legline"><div class="lt"><div class="t">${l.t}</div><div class="d">${l.d}</div></div>
+    <div class="ld"></div>
+    <div class="li"><div class="city">${l.city}</div><div class="meta">${l.meta||''}</div>${tags}${track}</div></div>${conn}`;
+}
+
+document.getElementById('map').innerHTML =
+  OUT.map(legHtml).join('') +
+  `<div class="arrivecard"><div class="b">✨ Lands in Shenzhen · Tue Jun 23, 4:50 AM ✨</div>
+   <div class="z">到达深圳 · 6月23日 周二 凌晨4:50 · 宝安机场 T3</div></div>`;
+document.getElementById('mapReturn').innerHTML = RETURN.map(legHtml).join('');
+
+function setView(v){
+  document.body.className = 'view-'+v;
+  document.getElementById('tgYun').classList.toggle('on', v==='yun');
+  document.getElementById('tgBrian').classList.toggle('on', v==='brian');
+  document.getElementById('title').textContent = v==='yun' ? 'Brian → Yun' : 'Brian Adrian — Itinerary';
+}
+
+tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
