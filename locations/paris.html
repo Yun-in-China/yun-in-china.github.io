@@ -15,22 +15,29 @@
   .star{position:absolute;border-radius:50%;background:#fff;animation:tw 4s ease-in-out infinite;}
   .star.gold{background:#ffe9a8;}
   @keyframes tw{0%,100%{opacity:.15}50%{opacity:.95}}
-  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:30px 20px 60px;}
-  .back{display:inline-block;color:#9fb6e6;text-decoration:none;font-size:.85rem;margin-bottom:24px;}
-  .back:hover{color:#cfe0ff;}
-  .hero{text-align:center;padding:24px 0 6px;}
-  .hero .date{font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:#e8c98a;}
-  .hero h1{font-size:2.6rem;font-weight:400;letter-spacing:.05em;margin-top:8px;
-    text-shadow:0 0 32px rgba(255,210,130,.4);}
-  .hero .zh{font-size:1.3rem;color:#bcd0f5;margin-top:2px;}
-  .hero .loc{margin-top:12px;color:#9fb6e6;font-size:.95rem;}
-  .poem{text-align:center;font-size:1.15rem;line-height:2;color:#dce7fb;margin:26px auto;max-width:520px;}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 0 60px;}
+  .pad{padding:0 20px;}
+  .back{display:inline-block;color:#cfe0ff;text-decoration:none;font-size:.85rem;margin:22px 0;}
+  .hero{position:relative;height:62vh;min-height:380px;border-radius:0 0 22px 22px;overflow:hidden;
+    background:linear-gradient(135deg,#2a3556,#46618c);}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,13,34,.25) 0%,rgba(6,13,34,.15) 45%,rgba(6,13,34,.92) 100%);}
+  .hero .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;text-align:center;}
+  .hero .date{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#ffe1ad;}
+  .hero h1{font-size:3rem;font-weight:400;letter-spacing:.05em;margin-top:6px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.6);}
+  .hero .zh{font-size:1.3rem;color:#eaf0fb;margin-top:2px;text-shadow:0 2px 12px rgba(0,0,0,.6);}
+  .hero .loc{margin-top:8px;color:#dbe6f5;font-size:.92rem;}
+  .poem{text-align:center;font-size:1.15rem;line-height:2;color:#dce7fb;margin:28px auto;max-width:540px;}
   .poem .zh{display:block;color:#9bb6e6;font-size:1rem;margin-top:4px;}
-  .card{background:rgba(10,22,51,.58);border:1px solid rgba(160,190,255,.2);border-radius:18px;
-    padding:24px 26px;margin:20px 0;backdrop-filter:blur(6px);}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:8px 0 6px;}
+  .photo{position:relative;height:200px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#23304f,#3c557d);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+  .photo.tall{grid-column:span 2;height:320px;}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo .pc{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;color:#fff;font-size:.9rem;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.7));text-shadow:0 1px 6px rgba(0,0,0,.6);}
+  .photo .pc .z{font-weight:400;color:#dbe6f5;font-size:.8rem;}
+  .card{background:rgba(10,22,51,.58);border:1px solid rgba(160,190,255,.2);border-radius:18px;padding:24px 26px;margin:20px 0;backdrop-filter:blur(6px);}
   .card h2{font-size:1.25rem;font-weight:600;color:#fff;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
   .card h2 .zh{font-size:.95rem;color:#e8c98a;font-weight:400;}
-  .card p{margin-top:10px;line-height:1.8;color:#cdd9f0;font-size:.96rem;}
   .item{margin-top:14px;}
   .item .h{font-weight:600;color:#fff;}
   .item .h .zh{color:#bcd0f5;font-weight:400;font-size:.9rem;}
@@ -41,105 +48,129 @@
   .tip .tx b{color:#ffe1a0;}
   .tip .tx .zh{display:block;color:#9bb6e6;font-size:.85rem;margin-top:2px;}
   .wx{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
-  .wxchip{background:rgba(125,160,232,.14);border:1px solid rgba(160,190,255,.28);border-radius:999px;
-    padding:7px 14px;font-size:.85rem;color:#cfe0ff;}
-  .closing{text-align:center;font-size:1.3rem;line-height:1.9;color:#fff;margin:34px auto 10px;
-    max-width:520px;text-shadow:0 0 22px rgba(255,210,130,.3);}
+  .wxchip{background:rgba(125,160,232,.14);border:1px solid rgba(160,190,255,.28);border-radius:999px;padding:7px 14px;font-size:.85rem;color:#cfe0ff;}
+  .closing{text-align:center;font-size:1.3rem;line-height:1.9;color:#fff;margin:34px auto 10px;max-width:520px;text-shadow:0 0 22px rgba(255,210,130,.3);}
   .closing .zh{display:block;color:#bcd0f5;font-size:1.05rem;margin-top:6px;}
   .foot{text-align:center;color:#5e76aa;font-size:.8rem;letter-spacing:.14em;margin-top:30px;}
+  @media(max-width:520px){.hero h1{font-size:2.3rem}.photo.tall{height:240px}.photo{height:150px}}
 </style>
 </head>
 <body>
 <div id="sky"></div>
 <div class="wrap">
-  <a class="back" href="../itinerary/">← Our Itinerary · 我们的行程</a>
-
   <div class="hero">
-    <div class="date">September 10–14, 2026 · 9月10–14日</div>
-    <h1>Paris</h1>
-    <div class="zh">巴黎 · 四天</div>
-    <div class="loc">📍 Paris, France · 法国巴黎</div>
-  </div>
-
-  <div class="poem">
-    Four days in the city of light — coffee in the morning, the river at dusk,<br>
-    and the Eiffel Tower sparkling just for us at night.<br>
-    <span class="zh">在光之城的四天 —— 清晨的咖啡，黄昏的塞纳河，<br>夜里，埃菲尔铁塔为我们闪烁。</span>
-  </div>
-
-  <div class="card">
-    <h2>🗼 The icons <span class="zh">必看之地</span></h2>
-    <div class="item"><div class="h">Eiffel Tower <span class="zh">埃菲尔铁塔</span></div>
-      <div class="x">The heart of Paris. Go up at sunset, or watch it sparkle on the hour after dark from the Champ de Mars lawn.</div></div>
-    <div class="item"><div class="h">The Louvre <span class="zh">卢浮宫</span></div>
-      <div class="x">The world's greatest museum. Quieter on Wednesday and Friday evenings.</div></div>
-    <div class="item"><div class="h">Notre-Dame &amp; Sainte-Chapelle <span class="zh">圣母院与圣礼拜堂</span></div>
-      <div class="x">Gothic Paris on the Île de la Cité — Sainte-Chapelle's stained glass glows like jewels.</div></div>
-    <div class="item"><div class="h">Arc de Triomphe &amp; Champs-Élysées <span class="zh">凯旋门与香榭丽舍</span></div>
-      <div class="x">Climb the arch for one of the best views down the grand avenue.</div></div>
-  </div>
-
-  <div class="card">
-    <h2>💙 Just for us <span class="zh">只属于我们</span></h2>
-    <div class="item"><div class="h">Seine river cruise at sunset <span class="zh">日落塞纳河游船</span></div>
-      <div class="x">Glide past Notre-Dame and the lit bridges with a glass of champagne as the sky turns gold.</div></div>
-    <div class="item"><div class="h">Sunrise at Trocadéro <span class="zh">特罗卡德罗的日出</span></div>
-      <div class="x">Early morning, the Eiffel Tower view feels like it belongs only to the two of us.</div></div>
-    <div class="item"><div class="h">Montmartre &amp; Sacré-Cœur <span class="zh">蒙马特与圣心大教堂</span></div>
-      <div class="x">Wander the hilltop village hand in hand, then watch the whole city from the basilica steps.</div></div>
-    <div class="item"><div class="h">Jardin des Tuileries <span class="zh">杜乐丽花园</span></div>
-      <div class="x">Fountains, flowers, and a quiet bench — slow Paris at its most beautiful.</div></div>
-  </div>
-
-  <div class="card">
-    <h2>🎨 If we want more <span class="zh">想再多一点</span></h2>
-    <div class="item"><div class="h">Musée d'Orsay <span class="zh">奥赛博物馆</span></div>
-      <div class="x">The Impressionists — Monet, Renoir, Van Gogh — in a beautiful old train station.</div></div>
-    <div class="item"><div class="h">Musée de l'Orangerie <span class="zh">橘园美术馆</span></div>
-      <div class="x">Sit surrounded by Monet's giant Water Lilies. Calm and dreamlike.</div></div>
-    <div class="item"><div class="h">Le Marais <span class="zh">玛莱区</span></div>
-      <div class="x">Charming old streets, cafés, and little shops — perfect for an afternoon stroll.</div></div>
-  </div>
-
-  <div class="card">
-    <h2>✨ Tips to make the most of four days <span class="zh">四天小贴士</span></h2>
-    <div class="tip"><div class="b">🎟️</div><div class="tx">
-      <b>Book the big sights now.</b> Even in September, time slots for the Eiffel Tower and the Louvre fill up weeks in advance.
-      <span class="zh">提前订票：即使在九月，埃菲尔铁塔和卢浮宫的时段也会提前几周订满。</span></div></div>
-    <div class="tip"><div class="b">🧥</div><div class="tx">
-      <b>Pack layers.</b> Evenings cool to around 55°F (13°C), so bring a light jacket or sweater for outdoor dining.
-      <span class="zh">备好外套：傍晚降到约13°C，户外用餐时带件轻外套或毛衣。</span></div></div>
-    <div class="tip"><div class="b">🍽️</div><div class="tx">
-      <b>Reserve dinner ahead.</b> The romantic restaurants — especially anything in the Eiffel Tower — book out far in advance.
-      <span class="zh">提前订餐厅：浪漫的餐厅，尤其是铁塔里的，要很早预订。</span></div></div>
-    <div class="tip"><div class="b">🚶</div><div class="tx">
-      <b>Go early, rest midday, glow at night.</b> Mornings are crowd-free, and Paris is at its most magical after dark.
-      <span class="zh">早出晚归：清晨人少，夜晚的巴黎最迷人。</span></div></div>
-  </div>
-
-  <div class="card">
-    <h2>🌤️ September weather <span class="zh">九月天气</span></h2>
-    <p>Early-autumn Paris is gentle and golden — warm afternoons, cool evenings, thinner crowds than summer.
-    A few rainy days are possible, so a small umbrella is worth tucking in the bag.
-    <span class="zh"><br>初秋的巴黎温柔而金黄 —— 午后温暖，夜晚微凉，人比夏天少。可能有几天下雨，包里带把小伞就好。</span></p>
-    <div class="wx">
-      <span class="wxchip">☀️ Day ~72°F / 22°C</span>
-      <span class="wxchip">🌙 Evening ~55°F / 13°C</span>
-      <span class="wxchip">🌂 A few rain showers</span>
-      <span class="wxchip">😊 Fewer crowds</span>
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tour_Eiffel_Wikimedia_Commons.jpg?width=1400"
+         alt="The Eiffel Tower, Paris" onerror="this.style.display='none'">
+    <div class="scrim"></div>
+    <div class="cap">
+      <div class="date">September 10–14, 2026 · 9月10–14日</div>
+      <h1>Paris</h1>
+      <div class="zh">巴黎 · 四天</div>
+      <div class="loc">📍 Paris, France · 法国巴黎</div>
     </div>
   </div>
 
-  <div class="closing">
-    Paris was made for two. 💙
-    <span class="zh">巴黎，是为两个人而生的。</span>
-  </div>
+  <div class="pad">
+    <a class="back" href="../itinerary/">← Our Itinerary · 我们的行程</a>
 
-  <div class="foot">Under the same sky — soon, in the same city. 同一片天空 —— 很快，同一座城。</div>
+    <div class="poem">
+      Four days in the city of light — coffee in the morning, the river at dusk,<br>
+      and the Eiffel Tower sparkling just for us at night.<br>
+      <span class="zh">在光之城的四天 —— 清晨的咖啡，黄昏的塞纳河，<br>夜里，埃菲尔铁塔为我们闪烁。</span>
+    </div>
+
+    <div class="gallery">
+      <div class="photo tall">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Louvre_Museum_Wikimedia_Commons.jpg?width=1200"
+             alt="The Louvre" onerror="this.style.display='none'">
+        <div class="pc">The Louvre <span class="z">卢浮宫</span></div>
+      </div>
+      <div class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Notre-Dame_de_Paris,_4_October_2017.jpg?width=900"
+             alt="Notre-Dame" onerror="this.style.display='none'">
+        <div class="pc">Notre-Dame <span class="z">圣母院</span></div>
+      </div>
+      <div class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Sacre-Coeur_Basilica_at_dusk,_Paris_2013.jpg?width=900"
+             alt="Sacré-Cœur, Montmartre" onerror="this.style.display='none'">
+        <div class="pc">Montmartre <span class="z">蒙马特</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🗼 The icons <span class="zh">必看之地</span></h2>
+      <div class="item"><div class="h">Eiffel Tower <span class="zh">埃菲尔铁塔</span></div>
+        <div class="x">The heart of Paris. Go up at sunset, or watch it sparkle on the hour after dark from the Champ de Mars lawn.</div></div>
+      <div class="item"><div class="h">The Louvre <span class="zh">卢浮宫</span></div>
+        <div class="x">The world's greatest museum. Quieter on Wednesday and Friday evenings.</div></div>
+      <div class="item"><div class="h">Notre-Dame &amp; Sainte-Chapelle <span class="zh">圣母院与圣礼拜堂</span></div>
+        <div class="x">Gothic Paris on the Île de la Cité — Sainte-Chapelle's stained glass glows like jewels.</div></div>
+      <div class="item"><div class="h">Arc de Triomphe &amp; Champs-Élysées <span class="zh">凯旋门与香榭丽舍</span></div>
+        <div class="x">Climb the arch for one of the best views down the grand avenue.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>💙 Just for us <span class="zh">只属于我们</span></h2>
+      <div class="item"><div class="h">Seine river cruise at sunset <span class="zh">日落塞纳河游船</span></div>
+        <div class="x">Glide past Notre-Dame and the lit bridges with a glass of champagne as the sky turns gold.</div></div>
+      <div class="item"><div class="h">Sunrise at Trocadéro <span class="zh">特罗卡德罗的日出</span></div>
+        <div class="x">Early morning, the Eiffel Tower view feels like it belongs only to the two of us.</div></div>
+      <div class="item"><div class="h">Montmartre &amp; Sacré-Cœur <span class="zh">蒙马特与圣心大教堂</span></div>
+        <div class="x">Wander the hilltop village hand in hand, then watch the whole city from the basilica steps.</div></div>
+      <div class="item"><div class="h">Jardin des Tuileries <span class="zh">杜乐丽花园</span></div>
+        <div class="x">Fountains, flowers, and a quiet bench — slow Paris at its most beautiful.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>🎨 If we want more <span class="zh">想再多一点</span></h2>
+      <div class="item"><div class="h">Musée d'Orsay <span class="zh">奥赛博物馆</span></div>
+        <div class="x">The Impressionists — Monet, Renoir, Van Gogh — in a beautiful old train station.</div></div>
+      <div class="item"><div class="h">Musée de l'Orangerie <span class="zh">橘园美术馆</span></div>
+        <div class="x">Sit surrounded by Monet's giant Water Lilies. Calm and dreamlike.</div></div>
+      <div class="item"><div class="h">Le Marais <span class="zh">玛莱区</span></div>
+        <div class="x">Charming old streets, cafés, and little shops — perfect for an afternoon stroll.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>✨ Tips to make the most of four days <span class="zh">四天小贴士</span></h2>
+      <div class="tip"><div class="b">🎟️</div><div class="tx">
+        <b>Book the big sights now.</b> Even in September, time slots for the Eiffel Tower and the Louvre fill up weeks in advance.
+        <span class="zh">提前订票：即使在九月，埃菲尔铁塔和卢浮宫的时段也会提前几周订满。</span></div></div>
+      <div class="tip"><div class="b">🧥</div><div class="tx">
+        <b>Pack layers.</b> Evenings cool to around 55°F (13°C), so bring a light jacket or sweater for outdoor dining.
+        <span class="zh">备好外套：傍晚降到约13°C，户外用餐时带件轻外套或毛衣。</span></div></div>
+      <div class="tip"><div class="b">🍽️</div><div class="tx">
+        <b>Reserve dinner ahead.</b> The romantic restaurants — especially anything in the Eiffel Tower — book out far in advance.
+        <span class="zh">提前订餐厅：浪漫的餐厅，尤其是铁塔里的，要很早预订。</span></div></div>
+      <div class="tip"><div class="b">🚶</div><div class="tx">
+        <b>Go early, rest midday, glow at night.</b> Mornings are crowd-free, and Paris is at its most magical after dark.
+        <span class="zh">早出晚归：清晨人少，夜晚的巴黎最迷人。</span></div></div>
+    </div>
+
+    <div class="card">
+      <h2>🌤️ September weather <span class="zh">九月天气</span></h2>
+      <p style="margin-top:10px;line-height:1.8;color:#cdd9f0;font-size:.96rem;">Early-autumn Paris is gentle and golden — warm afternoons, cool evenings, thinner crowds than summer.
+      A few rainy days are possible, so a small umbrella is worth tucking in the bag.
+      <span class="zh" style="color:#9bb6e6;"><br>初秋的巴黎温柔而金黄 —— 午后温暖，夜晚微凉，人比夏天少。可能有几天下雨，包里带把小伞就好。</span></p>
+      <div class="wx">
+        <span class="wxchip">☀️ Day ~72°F / 22°C</span>
+        <span class="wxchip">🌙 Evening ~55°F / 13°C</span>
+        <span class="wxchip">🌂 A few rain showers</span>
+        <span class="wxchip">😊 Fewer crowds</span>
+      </div>
+    </div>
+
+    <div class="closing">
+      Paris was made for two. 💙
+      <span class="zh">巴黎，是为两个人而生的。</span>
+    </div>
+
+    <div class="foot">Under the same sky — soon, in the same city. 同一片天空 —— 很快，同一座城。</div>
+  </div>
 </div>
 <script>
   const sky=document.getElementById('sky');
-  for(let i=0;i<130;i++){const s=document.createElement('div');
+  for(let i=0;i<120;i++){const s=document.createElement('div');
     s.className='star'+(Math.random()<0.18?' gold':'');
     const z=Math.random()*2+.5;s.style.width=s.style.height=z+'px';
     s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
