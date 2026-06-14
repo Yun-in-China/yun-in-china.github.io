@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Itinerary · 我们的行程</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:"Helvetica Neue","PingFang SC","Songti SC",system-ui,sans-serif;
+    background:linear-gradient(180deg,#060d22 0%,#0a1633 45%,#16294f 80%,#23386b 100%);
+    color:#eaf0fb; min-height:100vh; overflow-x:hidden; padding:40px 18px 60px;
+  }
+  #sky{position:fixed;inset:0;pointer-events:none;z-index:0;}
+  .star{position:absolute;border-radius:50%;background:#fff;animation:tw 4s ease-in-out infinite;}
+  @keyframes tw{0%,100%{opacity:.15}50%{opacity:.9}}
+  .wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+  h1{text-align:center;font-weight:400;font-size:2rem;letter-spacing:.05em;
+    text-shadow:0 0 28px rgba(120,165,255,.5);}
+  .sub{text-align:center;color:#9fb6e6;margin-top:6px;font-size:1rem;letter-spacing:.1em;}
+  .lead{text-align:center;color:#bcd0f5;margin:18px auto 30px;max-width:520px;line-height:1.8;}
+  .trip{display:block;text-decoration:none;color:inherit;
+    background:rgba(10,22,51,.55);border:1px solid rgba(160,190,255,.22);border-radius:18px;
+    padding:22px 24px;margin-bottom:18px;backdrop-filter:blur(6px);
+    transition:all .3s ease;display:flex;align-items:center;gap:20px;}
+  .trip:hover{border-color:rgba(160,190,255,.55);box-shadow:0 0 28px rgba(125,160,232,.3);
+    transform:translateY(-2px);}
+  .ic{font-size:46px;flex:0 0 auto;}
+  .ti{flex:1;}
+  .date{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#7e96c8;}
+  .name{font-size:1.3rem;font-weight:600;color:#fff;margin-top:3px;}
+  .namezh{font-size:1rem;color:#bcd0f5;margin-top:1px;}
+  .place{font-size:.88rem;color:#9fb6e6;margin-top:6px;}
+  .arrow{color:#7da0e8;font-size:1.4rem;flex:0 0 auto;}
+  .trip.reminder{border:1px dashed rgba(240,200,120,.5);background:rgba(40,32,12,.4);}
+  .trip.reminder .name{color:#ffe1a0;}
+  .soon{background:rgba(10,22,51,.35);border:1px dashed rgba(160,190,255,.25);
+    border-radius:18px;padding:20px;text-align:center;color:#8da4d4;font-size:.92rem;line-height:1.7;}
+  .foot{text-align:center;color:#5e76aa;font-size:.8rem;letter-spacing:.12em;margin-top:36px;}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<div class="wrap">
+  <h1>Our Itinerary</h1>
+  <div class="sub">我们的行程 · Places we'll go together</div>
+  <div class="lead">Every place on this list is a memory waiting to happen. 💙<br>这里的每一个地方，都是一段等待发生的回忆。</div>
+
+  <div class="trip reminder">
+    <div class="ic">🛂</div>
+    <div class="ti">
+      <div class="date">July 1, 2026 · 7月1日</div>
+      <div class="name">File for the expedited U.S. visa</div>
+      <div class="namezh">申请美国加急签证</div>
+      <div class="place">📋 U.S. State Department website · applications open today · limited allotment</div>
+    </div>
+  </div>
+
+  <a class="trip" href="../locations/paris.html">
+    <div class="ic">🗼</div>
+    <div class="ti">
+      <div class="date">September 10–14, 2026 · 9月10–14日</div>
+      <div class="name">Four Days in Paris</div>
+      <div class="namezh">巴黎四日</div>
+      <div class="place">📍 Paris, France · 法国巴黎</div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+
+  <a class="trip" href="../locations/northern-lights/">
+    <div class="ic">🌌</div>
+    <div class="ti">
+      <div class="date">October 15, 2026 · 10月15日</div>
+      <div class="name">Chasing the Northern Lights</div>
+      <div class="namezh">追逐北极光</div>
+      <div class="place">📍 Ice &amp; glass igloos · Saariselkä, Finnish Lapland · 芬兰拉普兰</div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+
+  <a class="trip" href="../locations/rome.html">
+    <div class="ic">🏛️</div>
+    <div class="ti">
+      <div class="date">November 15–20, 2026 · 11月15–20日</div>
+      <div class="name">Rome, the Eternal City</div>
+      <div class="namezh">罗马 · 永恒之城</div>
+      <div class="place">📍 Rome, Italy · 意大利罗马</div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+
+  <div class="trip">
+    <div class="ic">🏡</div>
+    <div class="ti">
+      <div class="date">December 10, 2026 · 12月10日</div>
+      <div class="name">Home to the USA</div>
+      <div class="namezh">回美国的家</div>
+      <div class="place">🇺🇸 90 days in the States, then back to China together · 在美国停留90天，再一起回中国</div>
+    </div>
+  </div>
+
+  <div class="soon">
+    More journeys coming soon… ✈️<br>
+    更多旅程，即将到来……
+  </div>
+
+  <div class="foot">Under the same sky, together. 同一片天空，在一起。</div>
+</div>
+<script>
+  const sky=document.getElementById('sky');
+  for(let i=0;i<120;i++){const s=document.createElement('div');s.className='star';
+    const z=Math.random()*2+.5;s.style.width=s.style.height=z+'px';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*4)+'s';s.style.animationDuration=(3+Math.random()*4)+'s';
+    sky.appendChild(s);}
+</script>
+</body>
+</html>
