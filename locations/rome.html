@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rome · 罗马</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:"Helvetica Neue","PingFang SC","Songti SC",system-ui,sans-serif;
+    background:linear-gradient(180deg,#060d22 0%,#0a1633 45%,#16294f 80%,#23386b 100%);
+    color:#eaf0fb; min-height:100vh; overflow-x:hidden;
+  }
+  #sky{position:fixed;inset:0;pointer-events:none;z-index:0;}
+  .star{position:absolute;border-radius:50%;background:#fff;animation:tw 4s ease-in-out infinite;}
+  .star.gold{background:#ffdca0;}
+  @keyframes tw{0%,100%{opacity:.15}50%{opacity:.95}}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 0 60px;}
+  .pad{padding:0 20px;}
+  .back{display:inline-block;color:#cfe0ff;text-decoration:none;font-size:.85rem;margin:22px 0;}
+  /* HERO image */
+  .hero{position:relative;height:62vh;min-height:380px;border-radius:0 0 22px 22px;overflow:hidden;
+    background:linear-gradient(135deg,#2a3556,#46618c);}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero .scrim{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(6,13,34,.25) 0%,rgba(6,13,34,.15) 45%,rgba(6,13,34,.92) 100%);}
+  .hero .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;text-align:center;}
+  .hero .date{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#ffe1ad;}
+  .hero h1{font-size:3rem;font-weight:400;letter-spacing:.05em;margin-top:6px;color:#fff;
+    text-shadow:0 2px 24px rgba(0,0,0,.6);}
+  .hero .zh{font-size:1.3rem;color:#eaf0fb;margin-top:2px;text-shadow:0 2px 12px rgba(0,0,0,.6);}
+  .hero .loc{margin-top:8px;color:#dbe6f5;font-size:.92rem;}
+  .poem{text-align:center;font-size:1.15rem;line-height:2;color:#dce7fb;margin:28px auto;max-width:540px;}
+  .poem .zh{display:block;color:#9bb6e6;font-size:1rem;margin-top:4px;}
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:8px 0 6px;}
+  .photo{position:relative;height:200px;border-radius:14px;overflow:hidden;
+    background:linear-gradient(135deg,#23304f,#3c557d);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+  .photo.tall{grid-column:span 2;height:320px;}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo .pc{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;color:#fff;font-size:.9rem;
+    font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.7));text-shadow:0 1px 6px rgba(0,0,0,.6);}
+  .photo .pc .z{font-weight:400;color:#dbe6f5;font-size:.8rem;}
+  .card{background:rgba(10,22,51,.58);border:1px solid rgba(160,190,255,.2);border-radius:18px;
+    padding:24px 26px;margin:20px 0;backdrop-filter:blur(6px);}
+  .card h2{font-size:1.25rem;font-weight:600;color:#fff;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .card h2 .zh{font-size:.95rem;color:#e8c08a;font-weight:400;}
+  .card p{margin-top:10px;line-height:1.8;color:#cdd9f0;font-size:.96rem;}
+  .item{margin-top:14px;}
+  .item .h{font-weight:600;color:#fff;}
+  .item .h .zh{color:#bcd0f5;font-weight:400;font-size:.9rem;}
+  .item .x{font-size:.92rem;color:#9fb6e6;line-height:1.7;margin-top:2px;}
+  .tip{display:flex;gap:12px;margin-top:14px;}
+  .tip .b{flex:0 0 auto;font-size:1.2rem;}
+  .tip .tx{font-size:.94rem;line-height:1.7;color:#cdd9f0;}
+  .tip .tx b{color:#ffd9a0;}
+  .tip .tx .zh{display:block;color:#9bb6e6;font-size:.85rem;margin-top:2px;}
+  .wx{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+  .wxchip{background:rgba(125,160,232,.14);border:1px solid rgba(160,190,255,.28);border-radius:999px;
+    padding:7px 14px;font-size:.85rem;color:#cfe0ff;}
+  .closing{text-align:center;font-size:1.3rem;line-height:1.9;color:#fff;margin:34px auto 10px;
+    max-width:520px;text-shadow:0 0 22px rgba(255,200,130,.3);}
+  .closing .zh{display:block;color:#bcd0f5;font-size:1.05rem;margin-top:6px;}
+  .foot{text-align:center;color:#5e76aa;font-size:.8rem;letter-spacing:.14em;margin-top:30px;}
+  @media(max-width:520px){.hero h1{font-size:2.3rem}.photo.tall{height:240px}.photo{height:150px}}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<div class="wrap">
+  <div class="hero">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseum_in_Rome,_Italy_-_April_2007.jpg?width=1400"
+         alt="The Colosseum, Rome" onerror="this.style.display='none'">
+    <div class="scrim"></div>
+    <div class="cap">
+      <div class="date">November 15–20, 2026 · 11月15–20日</div>
+      <h1>Rome</h1>
+      <div class="zh">罗马 · 永恒之城</div>
+      <div class="loc">📍 Rome, Italy · 意大利罗马</div>
+    </div>
+  </div>
+
+  <div class="pad">
+    <a class="back" href="../itinerary/">← Our Itinerary · 我们的行程</a>
+
+    <div class="poem">
+      Two thousand years of history under our feet — and a coin tossed in a fountain,<br>
+      a wish to come back to Rome together one day.<br>
+      <span class="zh">脚下是两千年的历史 —— 往喷泉里投一枚硬币，<br>许个愿，有一天我们再一起回到罗马。</span>
+    </div>
+
+    <div class="gallery">
+      <div class="photo tall">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trevi_Fountain,_Rome,_Italy_2_-_May_2007.jpg?width=1200"
+             alt="Trevi Fountain" onerror="this.style.display='none'">
+        <div class="pc">Trevi Fountain <span class="z">许愿池 — toss a coin together</span></div>
+      </div>
+      <div class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Saint_Peter%27s_Square,_Vatican_City_-_April_2007.jpg?width=900"
+             alt="St Peter's Square, Vatican" onerror="this.style.display='none'">
+        <div class="pc">The Vatican <span class="z">梵蒂冈</span></div>
+      </div>
+      <div class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo_2020.jpg?width=900"
+             alt="Colosseum" onerror="this.style.display='none'">
+        <div class="pc">The Colosseum <span class="z">斗兽场</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🏛️ The icons <span class="zh">必看之地</span></h2>
+      <div class="item"><div class="h">The Colosseum <span class="zh">斗兽场</span></div>
+        <div class="x">The mighty heart of ancient Rome. Standing inside this 2,000-year-old arena together is unforgettable — and in November the crowds are thin.</div></div>
+      <div class="item"><div class="h">Roman Forum &amp; Palatine Hill <span class="zh">古罗马广场与帕拉蒂尼山</span></div>
+        <div class="x">Walk the ruins where emperors once lived, right beside the Colosseum.</div></div>
+      <div class="item"><div class="h">The Vatican <span class="zh">梵蒂冈</span></div>
+        <div class="x">St. Peter's Basilica, the Sistine Chapel, and the Vatican Museums — climb the dome for the whole city at your feet.</div></div>
+      <div class="item"><div class="h">The Pantheon <span class="zh">万神殿</span></div>
+        <div class="x">A perfect ancient temple with light pouring through the open eye of its dome.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>💙 Just for us <span class="zh">只属于我们</span></h2>
+      <div class="item"><div class="h">Trevi Fountain <span class="zh">许愿池</span></div>
+        <div class="x">Toss a coin over your shoulder together — legend says it brings you back to Rome. We'll make the wish side by side.</div></div>
+      <div class="item"><div class="h">Boat on the lake, Villa Borghese <span class="zh">博尔盖塞别墅湖上小船</span></div>
+        <div class="x">Row a little boat across the quiet lake in Rome's most beautiful park.</div></div>
+      <div class="item"><div class="h">Evening in Trastevere <span class="zh">特拉斯提弗列的夜晚</span></div>
+        <div class="x">Cobblestone lanes, candlelit trattorias, and the real, romantic Rome after dark.</div></div>
+      <div class="item"><div class="h">Sunset over the rooftops <span class="zh">屋顶上的日落</span></div>
+        <div class="x">From the Pincio terrace or St. Peter's dome, watch the city turn gold.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>🍝 The little joys <span class="zh">小小的快乐</span></h2>
+      <div class="item"><div class="h">Gelato &amp; espresso <span class="zh">意式冰淇淋与浓缩咖啡</span></div>
+        <div class="x">Share a gelato on a piazza step — even in November, it's a must.</div></div>
+      <div class="item"><div class="h">Piazza Navona &amp; the Spanish Steps <span class="zh">纳沃纳广场与西班牙阶梯</span></div>
+        <div class="x">Baroque fountains, street artists, and people-watching with coffee in hand.</div></div>
+    </div>
+
+    <div class="card">
+      <h2>✨ How to prepare <span class="zh">出行准备</span></h2>
+      <div class="tip"><div class="b">🧥</div><div class="tx">
+        <b>Pack layers.</b> Bring a mix of long-sleeve shirts, sweaters, and a medium-weight jacket for cool mornings and evenings.
+        <span class="zh">分层穿搭：长袖衫、毛衣，再加一件中等厚度的外套，应对早晚的凉意。</span></div></div>
+      <div class="tip"><div class="b">🌂</div><div class="tx">
+        <b>Bring rain gear.</b> November is Rome's rainiest month — pack a reliable umbrella or waterproof parka, and comfortable water-resistant walking shoes.
+        <span class="zh">带好雨具：十一月是罗马最多雨的月份 —— 带把好伞或防水外套，穿舒适防水的步行鞋。</span></div></div>
+      <div class="tip"><div class="b">🎟️</div><div class="tx">
+        <b>Book the major sites.</b> Even in low season, reserve ahead for the Vatican Museums, the Colosseum, and special experiences like the Trevi Fountain visit to lock in your times.
+        <span class="zh">提前订票：即使是淡季，梵蒂冈博物馆、斗兽场和许愿池等热门体验也要提前预订，锁定时间。</span></div></div>
+    </div>
+
+    <div class="card">
+      <h2>🌤️ November weather <span class="zh">十一月天气</span></h2>
+      <p>Rome in November is mild and atmospheric — golden afternoons early in the month, cooler and a little
+      rainy later on, but far fewer tourists, so the great sights feel almost like our own.
+      <span class="zh"><br>十一月的罗马温和而有氛围 —— 月初午后金黄，月末转凉略有雨，但游客少很多，宏伟的景点几乎像是我们专属的。</span></p>
+      <div class="wx">
+        <span class="wxchip">☀️ Early Nov ~68°F / 20°C</span>
+        <span class="wxchip">🌙 Late Nov ~52°F / 11°C</span>
+        <span class="wxchip">🌂 Rainiest month</span>
+        <span class="wxchip">😊 Quiet, few crowds</span>
+      </div>
+    </div>
+
+    <div class="closing">
+      We'll throw a coin, and wish for more. 💙
+      <span class="zh">我们投下一枚硬币，许愿还有更多。</span>
+    </div>
+
+    <div class="foot">Under the same sky — soon, in the Eternal City. 同一片天空 —— 很快，在永恒之城。</div>
+  </div>
+</div>
+<script>
+  const sky=document.getElementById('sky');
+  for(let i=0;i<120;i++){const s=document.createElement('div');
+    s.className='star'+(Math.random()<0.18?' gold':'');
+    const z=Math.random()*2+.5;s.style.width=s.style.height=z+'px';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*4)+'s';s.style.animationDuration=(3+Math.random()*4)+'s';
+    sky.appendChild(s);}
+</script>
+</body>
+</html>

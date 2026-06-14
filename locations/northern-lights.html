@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northern Lights · 北极光</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:"Helvetica Neue","PingFang SC","Songti SC",system-ui,sans-serif;
+    background:linear-gradient(180deg,#04081a 0%,#081230 40%,#0e2046 78%,#1a3060 100%);
+    color:#eaf0fb; min-height:100vh; overflow-x:hidden;
+  }
+  #aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+  .rib{position:absolute;left:-20%;width:140%;height:220px;filter:blur(38px);opacity:.35;border-radius:50%;}
+  .rib.a{top:6%;background:linear-gradient(90deg,transparent,#3bf0a8,#37d0ff,transparent);animation:sway 14s ease-in-out infinite;}
+  .rib.b{top:18%;height:160px;background:linear-gradient(90deg,transparent,#7af0c0,#9b7bff,transparent);opacity:.28;animation:sway 19s ease-in-out infinite reverse;}
+  .rib.c{top:1%;height:120px;background:linear-gradient(90deg,transparent,#b6ff8a,#3bf0d0,transparent);opacity:.2;animation:sway 24s ease-in-out infinite;}
+  @keyframes sway{0%,100%{transform:translateX(-6%) skewY(-3deg)}50%{transform:translateX(8%) skewY(3deg)}}
+  #sky{position:fixed;inset:0;pointer-events:none;z-index:0;}
+  .star{position:absolute;border-radius:50%;background:#fff;animation:tw 4s ease-in-out infinite;}
+  @keyframes tw{0%,100%{opacity:.15}50%{opacity:.95}}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 0 60px;}
+  .pad{padding:0 20px;}
+  .back{display:inline-block;color:#9fb6e6;text-decoration:none;font-size:.85rem;margin:22px 0;}
+  .back:hover{color:#cfe0ff;}
+  /* HERO */
+  .hero{position:relative;height:60vh;min-height:360px;border-radius:0 0 22px 22px;overflow:hidden;
+    background:linear-gradient(135deg,#0c2a3a,#134e5e 60%,#1a6b54);}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,26,.2),rgba(4,8,26,.9));}
+  .hero .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;text-align:center;}
+  .hero .date{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:#7ff0cf;}
+  .hero h1{font-size:2.7rem;font-weight:400;letter-spacing:.04em;margin-top:6px;color:#fff;text-shadow:0 2px 26px rgba(0,0,0,.6);}
+  .hero .zh{font-size:1.25rem;color:#eaf0fb;margin-top:2px;text-shadow:0 2px 12px rgba(0,0,0,.6);}
+  .hero .loc{margin-top:8px;color:#cfeee4;font-size:.92rem;}
+  .poem{text-align:center;font-size:1.15rem;line-height:2;color:#dce7fb;margin:28px auto;max-width:520px;}
+  .poem .zh{display:block;color:#9bb6e6;font-size:1rem;margin-top:4px;}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:8px 0 6px;}
+  .photo{position:relative;height:200px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#10303f,#1a6b54);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+  .photo.tall{grid-column:span 2;height:300px;}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo .pc{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;color:#fff;font-size:.9rem;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.7));text-shadow:0 1px 6px rgba(0,0,0,.6);}
+  .photo .pc .z{font-weight:400;color:#dbe6f5;font-size:.8rem;}
+  .card{background:rgba(8,18,44,.6);border:1px solid rgba(120,200,200,.2);border-radius:18px;padding:24px 26px;margin:20px 0;backdrop-filter:blur(6px);}
+  .card h2{font-size:1.25rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:10px;}
+  .card h2 .zh{font-size:.95rem;color:#7fd8c4;font-weight:400;}
+  .card p{margin-top:12px;line-height:1.85;color:#cdd9f0;font-size:.97rem;}
+  .card p .zh{color:#9bb6e6;}
+  .feat{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+  .chip{background:rgba(90,200,180,.14);border:1px solid rgba(120,210,190,.3);border-radius:999px;padding:7px 14px;font-size:.84rem;color:#bdeede;}
+  .journey{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px;}
+  .stop{text-align:center;}
+  .stop .c{font-size:1.05rem;font-weight:600;color:#fff;}
+  .stop .s{font-size:.74rem;color:#8da4d4;}
+  .seg{color:#6fd6c0;font-size:1.2rem;}
+  .closing{text-align:center;font-size:1.3rem;line-height:1.9;color:#fff;margin:34px auto 10px;max-width:520px;text-shadow:0 0 24px rgba(80,240,200,.35);}
+  .closing .zh{display:block;color:#bcd0f5;font-size:1.05rem;margin-top:6px;}
+  .foot{text-align:center;color:#5e8a86;font-size:.8rem;letter-spacing:.14em;margin-top:30px;}
+  @media(max-width:520px){.hero h1{font-size:2.1rem}.photo.tall{height:230px}.photo{height:150px}}
+</style>
+</head>
+<body>
+<div id="aurora"><div class="rib a"></div><div class="rib b"></div><div class="rib c"></div></div>
+<div id="sky"></div>
+<div class="wrap">
+  <div class="hero">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Polarlicht_2.jpg?width=1400"
+         alt="Aurora borealis" onerror="this.style.display='none'">
+    <div class="scrim"></div>
+    <div class="cap">
+      <div class="date">October 15, 2026 · 10月15日</div>
+      <h1>The Northern Lights</h1>
+      <div class="zh">北极光</div>
+      <div class="loc">📍 Kakslauttanen Arctic Resort · Saariselkä, Finnish Lapland</div>
+    </div>
+  </div>
+
+  <div class="pad">
+    <a class="back" href="../itinerary/">← Our Itinerary · 我们的行程</a>
+
+    <div class="poem">
+      Far in the Arctic north, the sky catches fire in green and violet —<br>
+      and we'll be lying side by side, watching it through the glass.<br>
+      <span class="zh">在遥远的北极，天空燃起绿色与紫色的光，<br>而我们会并肩躺着，透过玻璃，一起看。</span>
+    </div>
+
+    <div class="gallery">
+      <div class="photo tall">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Aurora_Borealis_above_Lyngenfjorden,_Norway,_2012_March.jpg?width=1200"
+             alt="Aurora over the fjord" onerror="this.style.display='none'">
+        <div class="pc">Aurora over the Arctic <span class="z">极光在北极的夜空</span></div>
+      </div>
+      <div class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Husky_-_Sled_dog.jpg?width=900"
+             alt="Husky" onerror="this.style.display='none'">
+        <div class="pc">Husky safari <span class="z">哈士奇雪橇</span></div>
+      </div>
+      <div class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rentier_fws_1.jpg?width=900"
+             alt="Reindeer" onerror="this.style.display='none'">
+        <div class="pc">Reindeer of Lapland <span class="z">拉普兰的驯鹿</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🏔️ Where we'll stay <span class="zh">我们住哪里</span></h2>
+      <p>A glass igloo at the original Kakslauttanen Arctic Resort. The roof is made of special
+      thermal glass, so the cold stays out and the whole sky stays in. We can watch the aurora
+      drift overhead from the warmth of our own bed — with a private sauna and a fireplace just for us.
+      <span class="zh"><br>住进卡克斯劳塔宁的玻璃穹顶屋。屋顶是特制的保温玻璃 —— 寒冷被挡在外面，整片星空留在里面。我们可以躺在温暖的床上，看极光在头顶流动，还有只属于我们的私人桑拿和壁炉。</span></p>
+      <div class="feat">
+        <span class="chip">✨ Aurora from your pillow</span>
+        <span class="chip">🔥 Private fireplace</span>
+        <span class="chip">🧖 Own sauna</span>
+        <span class="chip">🌲 Kelo-pine cabin</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✈️ How we get there <span class="zh">我们怎么去</span></h2>
+      <p>From home in Shenzhen, up over the top of the world to Finland, then a short hop north
+      into Lapland — and the last stretch through snowy forest to the resort.
+      <span class="zh"><br>从深圳的家出发，飞越世界之巅来到芬兰，再向北一小段进入拉普兰 —— 最后穿过白雪森林，抵达度假村。</span></p>
+      <div class="journey">
+        <div class="stop"><div class="c">Shenzhen</div><div class="s">深圳 · SZX</div></div>
+        <div class="seg">✈</div>
+        <div class="stop"><div class="c">Helsinki</div><div class="s">赫尔辛基</div></div>
+        <div class="seg">✈</div>
+        <div class="stop"><div class="c">Ivalo</div><div class="s">伊瓦洛 · the Arctic gateway</div></div>
+        <div class="seg">→</div>
+        <div class="stop"><div class="c">Kakslauttanen</div><div class="s">玻璃穹顶屋</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🌟 What we'll do <span class="zh">我们会做什么</span></h2>
+      <p>Hunt the aurora on a guided night tour, glide through silver forest behind a team of huskies,
+      meet the reindeer, warm up in the world's largest smoke sauna, and let the quiet of the Arctic
+      wrap all the way around us.
+      <span class="zh"><br>跟着向导在夜里追极光，乘着哈士奇雪橇穿过银白森林，去看驯鹿，在世界最大的烟桑拿里取暖，让北极的宁静把我们温柔包裹。</span></p>
+      <div class="feat">
+        <span class="chip">🐺 Husky safari</span>
+        <span class="chip">🦌 Reindeer</span>
+        <span class="chip">🌌 Aurora night tour</span>
+        <span class="chip">🛷 Snowmobile</span>
+        <span class="chip">🧖 Smoke sauna</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💚 When the lights come <span class="zh">极光什么时候来</span></h2>
+      <p>Mid-October sits right inside the northern-lights season, when the nights have grown long
+      and dark enough for the sky to dance. Some nights it whispers, some nights it blazes —
+      and we'll be there for whatever it gives us.
+      <span class="zh"><br>十月中正是北极光的季节，夜晚已经够长够暗，天空开始起舞。有些夜晚它轻轻低语，有些夜晚它熊熊燃烧 —— 无论它给我们什么，我们都在那里。</span></p>
+    </div>
+
+    <div class="closing">
+      Someday soon, the sky will put on a show — just for us. 💚
+      <span class="zh">很快，天空会为我们上演一场只属于我们的光。</span>
+    </div>
+
+    <div class="foot">Under the same sky — soon, in the same place. 同一片天空 —— 很快，同一个地方。</div>
+  </div>
+</div>
+<script>
+  const sky=document.getElementById('sky');
+  for(let i=0;i<130;i++){const s=document.createElement('div');s.className='star';
+    const z=Math.random()*2+.5;s.style.width=s.style.height=z+'px';
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*4)+'s';s.style.animationDuration=(3+Math.random()*4)+'s';
+    sky.appendChild(s);}
+</script>
+</body>
+</html>
